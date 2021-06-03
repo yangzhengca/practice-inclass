@@ -23,7 +23,6 @@ block content
             -var isRed=(selectedSuperHero.fav_color=='red')
             -var isGreen=(selectedSuperHero.fav_color=='green')
             -var isBlue=(selectedSuperHero.fav_color=='blue')
-            
             span Fav Color: 
             if isRed
                 input(type="radio",name="color",value="red",checked,style="color:red")
@@ -47,4 +46,12 @@ block content
                 input(type="radio",name="color",value="blue",checked,style="color:blue")
                 span(style="color:blue") Blue
             else
-                h2 Warning! This record has no fav-color!
+                h3(style="color:red") Warning! This hero has no fav-color! Please choose one for him/her.
+                input(type="radio",name="color",value="red")
+                span Red
+                input(type="radio",name="color",value="green")
+                span Green
+                input(type="radio",name="color",value="blue")
+                span Blue
+                br
+            button Update

@@ -119,16 +119,16 @@ app.post('/edit',urlEncodeParser,(req,res)=>{
     const set={$set:{
         name:req.body.superhero,
         description:req.body.description,
-        fav_season:req.body.season,
+        // fav_season:req.body.season,
         fav_color:req.body.color
     }};
-    // const selectedColor=req.body.color;
+
     mongoClient.connect(dburl,function(err,client){
         const db=client.db('comics');
         const collection=db.collection('superheroes');
         collection.updateOne(filter,set,(err,result)=>{
             client.close();
-            res.redirect('/superheros/'+selectedId);
+            res.redirect('/');
         });
     });
 });
