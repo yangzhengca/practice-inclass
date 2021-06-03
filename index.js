@@ -71,7 +71,7 @@ app.post('/superheros/',urlEncodeParser,(req,res)=>{
         fav_color:req.body.color
     };
 
-    mongoClient.connect(dburl,function(err,client){
+    mongoClient.connect(dburl,(err,client)=>{
         const db=client.db('comics');
         const collection=db.collection('superheroes');
         collection.insertOne(newSuperhero,(err,result)=>{
@@ -119,14 +119,15 @@ app.post('/edit',urlEncodeParser,(req,res)=>{
     const set={$set:{
         name:req.body.superhero,
         description:req.body.description,
-        // fav_season:req.body.season,
+        fav_season:req.body.season,
         fav_color:req.body.color
     }};
 
-    mongoClient.connect(dburl,function(err,client){
+    mongoClient.connect(dburl,(err,client)=>{
         const db=client.db('comics');
         const collection=db.collection('superheroes');
         collection.updateOne(filter,set,(err,result)=>{
+            // console.log(err);
             client.close();
             res.redirect('/');
         });
@@ -136,5 +137,5 @@ app.post('/edit',urlEncodeParser,(req,res)=>{
 
 
 app.listen(port,()=>{
-    console.log(`listening at port ${port}`)
+    console.log(`listening at port ${port}`);
 });

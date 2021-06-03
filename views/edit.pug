@@ -5,7 +5,7 @@ block content
         h3=`Name: ${selectedSuperHero.name}`
         h3=`Description: ${selectedSuperHero.description}`
         hr
-        form(action="/edit/",method="post")
+        form(action="/edit",method="post")
             label(for="superheroId") Change name to:
             br
             input(type="text",required="required",name="superhero",id="superheroId",value=selectedSuperHero.name)
@@ -13,45 +13,45 @@ block content
             label(for="descriptionId") Change discription to:
             br
             input(type="text",required="required",name="description",id="descriptionId",value=selectedSuperHero.description)
+            input(type="hidden",name="_id",value=selectedSuperHero._id)
             br
-            //- span Fav Season: 
-            //- input(type="checkbox",name='season',value="winter")
-            //- span Winter
-            //- input(type="checkbox",name='season',value="summer")
-            //- span Summer
-            //- br
-            -var isRed=(selectedSuperHero.fav_color=='red')
-            -var isGreen=(selectedSuperHero.fav_color=='green')
-            -var isBlue=(selectedSuperHero.fav_color=='blue')
-            span Fav Color: 
-            if isRed
-                input(type="radio",name="color",value="red",checked,style="color:red")
-                span(style="color:red") Red
-                input(type="radio",name="color",value="green")
-                span Green
-                input(type="radio",name="color",value="blue")
-                span Blue
-            else if isGreen
-                input(type="radio",name="color",value="red")
-                span Red
-                input(type="radio",name="color",value="green",checked,style="color:green")
-                span(style="color:green") Green
-                input(type="radio",name="color",value="blue")
-                span Blue
-            else if isBlue
-                input(type="radio",name="color",value="red")
-                span Red
-                input(type="radio",name="color",value="green")
-                span Green
-                input(type="radio",name="color",value="blue",checked,style="color:blue")
-                span(style="color:blue") Blue
-            else
-                h3(style="color:red") Warning! This hero has no fav-color! Please choose one for him/her.
-                input(type="radio",name="color",value="red")
-                span Red
-                input(type="radio",name="color",value="green")
-                span Green
-                input(type="radio",name="color",value="blue")
-                span Blue
-                br
+            //- button Update 1
+            span Fav Season: 
+            input(type="checkbox",name='season',value="winter")
+            span Winter
+            input(type="checkbox",name='season',value="summer")
+            span Summer
+            br
+            //- button Update 1
+            case selectedSuperHero.fav_color
+                when 'red'
+                    input(type="radio",name="color",value="red",checked,style="color:red")
+                    span(style="color:red") Red
+                    input(type="radio",name="color",value="green")
+                    span Green
+                    input(type="radio",name="color",value="blue")
+                    span Blue
+                when 'green'
+                    input(type="radio",name="color",value="red")
+                    span Red
+                    input(type="radio",name="color",value="green",checked,style="color:green")
+                    span(style="color:green") Green
+                    input(type="radio",name="color",value="blue")
+                    span Blue
+                when 'blue'
+                    input(type="radio",name="color",value="red")
+                    span Red
+                    input(type="radio",name="color",value="green")
+                    span Green
+                    input(type="radio",name="color",value="blue",checked,style="color:blue")
+                    span(style="color:blue") Blue
+                default
+                    h3(style="color:red") Warning! This hero has no fav-color! Please choose one for him/her.
+                    input(type="radio",name="color",value="red")
+                    span Red
+                    input(type="radio",name="color",value="green")
+                    span Green
+                    input(type="radio",name="color",value="blue")
+                    span Blue
+                    br
             button Update
