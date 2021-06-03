@@ -1,0 +1,14 @@
+extends ./layout.pug
+block content
+  h1 superheros
+  div.container
+  //- script(type="text/javascript").
+  //-   if(true){console.log('worked!')}      
+  p This displays superheros info 
+  include ./create.pug
+  each item in mysuperheros
+    div.superhero-container        
+      h4=item.name
+      a(href="/superheros/"+item._id) Details
+      a(href="/edit/"+item._id) Edit
+      a(href="/delete/"+item._id) Delete

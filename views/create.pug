@@ -1,0 +1,23 @@
+.create-container 
+    form(action="/superheros",method="post")
+        input(type="text",placeholder="superhero name",required="required",name="superhero")
+        input(type="text",placeholder="discription",required="required",name="description")
+        br
+        //- span Fav Season: 
+        //- input(type="checkbox",name='season',value="winter",checked)
+        //- span Winter
+        //- input(type="checkbox",name='season',value="summer",)
+        //- span Summer
+        //- br
+        span Fav Color: 
+        input(type="radio",name="color",value="red")
+        span Red
+        input(type="radio",name="color",value="green")
+        span Green
+        input(type="radio",name="color",value="blue",checked)
+        span Blue
+        br
+        button Create
+
+
+        
